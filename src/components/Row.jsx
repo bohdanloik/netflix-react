@@ -24,15 +24,26 @@ function Row(props) {
     
   return (
     <React.Fragment>
-        <h2>{props.title}</h2>
-        <div className='text-white p-4 relative flex items-center group'>
-            <MdChevronLeft onClick={slideLeft} className='absolute bg-white text-black rounded-full opacity-50 hover:opacity-100 cursor-pointer z-10 left-0 hidden group-hover:block' size={40}/>
-            <div id={`slider${props.rowID}`} className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative'>
-                {movies.map((item, id) => {
-                    return <Movies item={item} key={id}/>
-                })}
+        <h2 className='text-white/100 font-bold md:text-xl p-4'>{props.title}</h2>
+        <div className='relative flex items-center group'>
+            <MdChevronLeft
+            onClick={slideLeft}
+            className='bg-white left-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block'
+            size={40}
+            />
+            <div
+            id={'slider' + props.rowID}
+            className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative'
+            >
+            {movies.map((item, id) => (
+                <Movies key={id} item={item} />
+            ))}
             </div>
-            <MdChevronRight onClick={slideRight} className='absolute text-black bg-white rounded-full opacity-50 hover:opacity-100 cursor-pointer z-10 right-0 hidden group-hover:block' size={40}/>
+            <MdChevronRight
+            onClick={slideRight}
+            className='bg-white right-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block'
+            size={40}
+            />
         </div>
     </React.Fragment>
   )
